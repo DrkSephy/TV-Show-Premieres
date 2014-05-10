@@ -30,7 +30,8 @@
         <div class="results-top"></div>
         <div class="results-container">
             <ul class="episode-list">
-                <li ng-repeat="tvshow in results | filter: filterText | isGenre:genreFilter">                    <div class="row-fluid">
+                <li ng-repeat="tvshow in results | filter: filterText | isGenre:genreFilter">                    
+                    <div class="row-fluid">
                         <div class="span3">
                             <img src="{{tvshow.episode.images.screen}}"/>
                                 <div class="ratings"><strong>Ratings:</strong> <span class="label"><i class="icon-thumbs-up"></i> {{tvshow.episode.ratings.loved}}</span> <span class="label"><i class="icon-thumbs-down"></i> {{tvshow.episode.ratings.hated}}</span> <span class="label label-important" ng-class="{'label-success': tvshow.episode.ratings.percentage >= 50}"><strong>%</strong> {{tvshow.episode.ratings.percentage}}</div>
@@ -45,7 +46,7 @@
                                 <li><strong>On Air: </strong> {{tvshow.show.air_day}} {{tvshow.show.air_time}}</li>
                                 <li><strong>Network: </strong> {{tvshow.show.network}}</li>
                                 <li><strong>Season #: </strong> {{tvshow.episode.season}}</li>
-                                <li><strong>Genres:</strong> <span class="label label-inverse genre" ng-repeat="genre in tvshow.show.genres">{{genre}}</span></li>
+                                <li><strong>Genres:</strong> <span class="label label-inverse genre" ng-repeat="genre in tvshow.show.genres" ng-click="setGenreFilter(genre)">{{genre}}</span></li>
                             </ul>
                         </div>
                     </div>
