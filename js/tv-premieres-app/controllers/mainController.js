@@ -12,6 +12,8 @@ app.controller("mainController", function($scope, $http){
     */
     $scope.results = [];
     $scope.filterText = null;
+    $scope.availableGenres = [];
+    $scope.genreFilter = null;
     $scope.init = function() {
         //API requires a start date
         var today = new Date();
@@ -35,6 +37,19 @@ app.controller("mainController", function($scope, $http){
                     tvshow.date = date;
                     // Declare a scope variable to hold our processed results
                     $scope.results.push(tvshow);
+                    // Loop through each genre for this episode
+                    angular.forEach(tvshow.show.genres, function(genre, index){
+                        // Add genre to availableGenres array if it doesn't exist
+                        var exists = false;
+                        angular.forEach($scope.availableGenres, function(avGenre, index){
+                            if(avGenre === genre){
+                                exists = true;
+                            }
+                        });
+                        if(exists === false){
+                            $scope.availableGenres.push(genre);
+                        }
+                    });
                 });
             });
         }).error(function(error) {
@@ -42,4 +57,22 @@ app.controller("mainController", function($scope, $http){
         });
     };
  
+});
+
+app.filter('isGenre', function() {
+    return function(input, genre) {
+        if (typeof genre == 'undefined' || genre == null) {
+            return input;
+        } else {
+            var out = [];
+            for (var a = 0; a < input.length; a++){
+                for (var b = 0; b < input[a].show.genres.length; b++){
+                    if(input[a].show.genres[b] == genre) {
+                        out.push(input[a]);
+                    }
+                }
+            }
+            return out;
+        }
+    };
 });
