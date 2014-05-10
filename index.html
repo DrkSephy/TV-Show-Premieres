@@ -19,7 +19,10 @@
         </div>
     </div>
 	<div class="container main-frame" ng-app="TVPremieresApp" ng-controller="mainController" ng-init="init()">
-		<div class="search-box row-fluid form-inline"></div>
+		<div class="search-box row-fluid form-inline">
+            <label>Filter: </label>
+            <input type="text" ng-model="filterText"/>
+        </div>
         <div class="results-top"></div>
         <div class="results-container">
             <ul class="episode-list">
