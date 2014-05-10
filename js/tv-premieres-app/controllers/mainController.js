@@ -1,6 +1,6 @@
 app.controller("mainController", function($scope, $http){
  
-    $scope.apiKey = "[a01402d4cb067ffdbc858532cb310a3e]";
+    $scope.apiKey = "a01402d4cb067ffdbc858532cb310a3e";
     $scope.init = function() {
         //API requires a start date
         var today = new Date();
