@@ -10,6 +10,7 @@ app.controller("mainController", function($scope, $http){
      * Days - The number of days of data to retrieve
     
     */
+    $scope.results = [];
     $scope.init = function() {
         //API requires a start date
         var today = new Date();
@@ -19,14 +20,19 @@ app.controller("mainController", function($scope, $http){
             console.log(data);
             // As the data comes in, we need to format it for our own use. 
             // For each day, get all the episodes
+            // Loop through each data group and store the data in a local `date` variable
             angular.forEach(data, function(value, index){
                 // The API stores the full data separate from each episode. Save it for future use.
-                var data = value.date;
+                var date = value.date;
                 // For each episode, push it to our `results` array
+                // Loop through each of the TV shows in that date group
+                // And add the locally stored date to the tvshow object. 
+                // Then add each `tvshow` object to the $scope.results array/
                 angular.forEach(value.episodes, function(tvshow, index){
                     // Create a date string from the timestamp so the user can filter using text input
                     // Attach the full date to each episode
                     tvshow.date = date;
+                    // Declare a scope variable to hold our processed results
                     $scope.results.push(tvshow);
                 });
             });
