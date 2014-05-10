@@ -14,6 +14,9 @@ app.controller("mainController", function($scope, $http){
     $scope.filterText = null;
     $scope.availableGenres = [];
     $scope.genreFilter = null;
+    $scope.setGenreFilter = function(genre){
+        $scope.genreFilter = genre;
+    }
     $scope.init = function() {
         //API requires a start date
         var today = new Date();
