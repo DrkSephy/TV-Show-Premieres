@@ -22,6 +22,10 @@
 		<div class="search-box row-fluid form-inline">
             <label>Filter: </label>
             <input type="text" ng-model="filterText"/>
+            <label>Genre: </label>
+            <select ng-model="genreFilter" ng-options="label for label in availableGenres">
+                <option value="">All</option>
+            </select>
         </div>
         <div class="results-top"></div>
         <div class="results-container">
