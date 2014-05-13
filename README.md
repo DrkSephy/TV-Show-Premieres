@@ -1,1 +1,1 @@
-A sample web application for viewing TV Show Premeires using AngularJS.
+A sample web application for viewing TV Show Premeires built using AngularJS and the trakt.tv API.
